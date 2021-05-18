@@ -6,7 +6,7 @@ COPY . /build
 
 RUN apt update -y
 RUN apt install python3-dev -y
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python 
+#RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python 
 ##RUN export PATH="$HOME/.poetry/bin:$PATH"
 ##RUN python -m venv /opt/venv && \
 ##  . /opt/venv/bin/activate
@@ -15,8 +15,9 @@ RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-
 
 RUN python -m venv /opt/venv && \
   . /opt/venv/bin/activate && \
-  $HOME/.poetry/bin/poetry install && \
-  $HOME/.poetry/bin/poetry build -f wheel -n && \
+  pip install poetry && \
+  poetry install && \
+  poetry build -f wheel -n && \
   pip install --no-deps dist/*.whl && \
   pip install ply && \
   rm -rf dist *.egg-info
