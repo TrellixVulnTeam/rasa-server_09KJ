@@ -24,12 +24,11 @@ RUN python -m venv /opt/venv && \
 
 
 ENV PATH="/opt/venv/bin:$PATH"
-RUN find / -type f -name rasa
 WORKDIR /app
 RUN mkdir /app/models && chmod 777 /app/models
 
-ENV BF_URL="http://localhost:3000"
-ENV BF_PROJECT_ID="uDQLTg9xNgFmo6xT8"
+#ENV BF_URL="http://localhost:3000"
+#ENV BF_PROJECT_ID="uDQLTg9xNgFmo6xT8"
 
 EXPOSE 5005
 
